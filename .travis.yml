@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode10.2
+
+env:
+  - ACTION=test PLATFORM=iOS DESTINATION='platform=iOS Simulator,name=iPhone 6S'
+
+script:
+  - set -o pipefail && xcodebuild -scheme FrontCamera -destination "$DESTINATION" $ACTION | xcpretty
