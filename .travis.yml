@@ -1,8 +1,14 @@
 language: objective-c
 osx_image: xcode10.2
+xcode_project: FrontCamera.xcodeproj
+xcode_scheme: FrontCamera 
+xcode_destination: platform=iOS Simulator,OS=11.0,name=iPad Pro (9.7-inch)
 
-before_install:
+before_script:
   - brew update
+  - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
-before_deploy:
+script:
+  - xcodebuild -scheme FrontCamera build | xcpretty
+after_script:
   - carthage build --archive
