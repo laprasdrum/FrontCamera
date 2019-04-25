@@ -1,2 +1,3 @@
 *.zip
 Carthage
+**/xcuserdata
